@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness World</title>
+    <link rel="stylesheet" href="style.css">
+     <style>
+        body{
+            background-image: url(wallpaer01.webp);
+        }
+     </style>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="left">
+         <img src="logo02.webp" alt="">
+         
+         
+        </div>
+       <div class="left01">
+        <div>Fitness World</div>
+       </div>
+
+        <div class="mid">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Fitness Calculator</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+        </div>
+        <div class="right">
+        <button class="btn">Call Us</button>
+        <button class="btn">Email Us</button>
+        </div>
+    </header>
+
+    <div class="container">
+        
+       <form onsubmit="login(event)">
+        
+        <h2>JOIN THE BEST FITNESS GYM</h2>
+      
+        <div class="form-group">
+           <input name='name' type="text" placeholder="Enter Your Name">
+        </div>
+        <div class="form-group"> 
+         <input name='no' type="text" placeholder="Enter Your Mobile No">
+        </div>
+        <div class="form-group">
+         <input type="text" placeholder="Enter Your Locatin" name='location'>
+        </div>
+        <div class="form-group">
+        <input type="text" placeholder="Enter Your Email Address" name='email'>
+        </div>
+        <div class="form-group">
+        <button class="btn" >
+            Submit
+        </button>
+        </div>
+        <ul id="details">
+            
+        </ul>
+        
+       </form>
+    </div>
+    
+    
+</body>
+<script>
+    function login(event){
+        event.preventDefault();
+        var name=event.target.name.value;
+        var no=event.target.no.value;
+        var location=event.target.location.value;
+        var email=event.target.email.value;
+        let myobj={
+          name,
+          no,
+          location,
+          email
+
+        };
+    
+
+   
+    localStorage.setItem(myobj.email,JSON.stringify(myobj));
+    
+    showUserOnScreen(myobj);
+    }
+    function showUserOnScreen(myobj){
+        const parentele=document.getElementById('details');
+        parentele.style.color='red';
+        parentele.style.backgroundColor='white';
+        parentele.innerHTML=parentele.innerHTML+`<li>${myobj.name}-${myobj.no}-${myobj.location}-${myobj.email}<li>`;
+    }
+</script>
+</html>
